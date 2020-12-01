@@ -35,6 +35,9 @@ class FAQWidget extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     WidgetSpan(
+                      child: icon,
+                    ),
+                    WidgetSpan(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2, horizontal: 5),
@@ -44,9 +47,6 @@ class FAQWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    WidgetSpan(
-                      child: icon,
-                    ),
                   ],
                 ),
               ),
@@ -54,14 +54,6 @@ class FAQWidget extends StatelessWidget {
                 e.value,
                 style: Theme.of(context).accentTextTheme.bodyText2
               ),
-            
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-            //   child: Divider(
-            //     thickness: 1,
-            //     color: Colors.blueGrey,
-            //   ),
-            // ),
           ],
         ),
       ),
