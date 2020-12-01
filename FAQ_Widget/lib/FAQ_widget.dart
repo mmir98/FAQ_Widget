@@ -4,52 +4,66 @@ class FAQWidget extends StatelessWidget {
   // List<Map<String, String>> content;
   final Map<String, String> content;
   final bool isRTL;
+  final Icon icon;
 
-  FAQWidget({this.content, this.isRTL});
+  FAQWidget({this.content, this.isRTL, this.icon});
 
-  Widget _createContent(e) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  WidgetSpan(
-                    child: Text(
-                      e.key,
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold),
+  Widget _createContent(e, BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: Theme.of(context).backgroundColor,
+      elevation: 10,
+      margin: EdgeInsets.symmetric(
+        vertical: 1,
+        horizontal: 5,
+      ),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 10,
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 3,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    WidgetSpan(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 5),
+                        child: Text(
+                          e.key,
+                          style: Theme.of(context).accentTextTheme.bodyText1
+                        ),
+                      ),
                     ),
-                  ),
-                  WidgetSpan(
-                    child: Icon(Icons.question_answer_outlined),
-                  ),
-                ],
+                    WidgetSpan(
+                      child: icon,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            child: Text(
-              e.value,
-              style: TextStyle(
-                fontSize: 11,
+              Text(
+                e.value,
+                style: Theme.of(context).accentTextTheme.bodyText2
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-            child: Divider(
-              thickness: 1,
-              color: Colors.blueGrey,
-            ),
-          ),
-        ],
+            
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+            //   child: Divider(
+            //     thickness: 1,
+            //     color: Colors.blueGrey,
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }
@@ -62,7 +76,7 @@ class FAQWidget extends StatelessWidget {
           ...content.entries.map((e) {
             return Directionality(
                 textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
-                child: _createContent(e));
+                child: _createContent(e, context));
           }).toList()
         ],
       ),

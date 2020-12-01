@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.indigo,
+        backgroundColor: Colors.teal,
+        accentTextTheme: TextTheme(
+          bodyText1: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          bodyText2: TextStyle(color: Colors.white70, fontSize: 15),
+        ),
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
@@ -75,19 +80,6 @@ ePUB استانداردی جهانی برای کتاب‌های الکترونی
 به دلیل محدودیت‌های وضع شده توسط Apple، خرید کتاب به صورت مستقیم از درون نسخه‌ی iOS طاقچه امکان‌پذیر نیست و خرید باید از درون سایت صورت گیرد. اما در نسخه‌ی اندروید طاقچه، خرید را می‌توانید مستقیما از درون اپلیکیشن انجام دهید."""
   };
 
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -96,12 +88,6 @@ ePUB استانداردی جهانی برای کتاب‌های الکترونی
       // the App.build method, and use it to set our appbar title.
       title: Text(widget.title),
     );
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: appbar,
       body: Center(
@@ -124,20 +110,14 @@ ePUB استانداردی جهانی برای کتاب‌های الکترونی
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Text(
-            //   'You have pushed the button this many times:',
-            // ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headline4,
-            // ),
             Container(
               height: mediaQuery.size.height -
                   appbar.preferredSize.height -
                   mediaQuery.padding.top,
               child: FAQWidget(
                 content: list,
-                isRTL: false,
+                isRTL: true,
+                icon: Icon(Icons.question_answer),
               ),
             )
           ],
