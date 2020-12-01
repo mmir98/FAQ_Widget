@@ -31,29 +31,39 @@ class FAQWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: icon,
-                    ),
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 2, horizontal: 5),
-                        child: Text(
-                          e.key,
-                          style: Theme.of(context).accentTextTheme.bodyText1
-                        ),
-                      ),
-                    ),
-                  ],
+            // RichText(
+            //   text: TextSpan(
+            //     children: [
+            //       WidgetSpan(
+            //         child: icon,
+            //       ),
+            //       WidgetSpan(
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(
+            //               vertical: 2, horizontal: 5),
+            //           child: Text(e.key,
+            //               style: Theme.of(context).accentTextTheme.bodyText1),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            Row(
+              children: [
+                icon,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                  child: Text(
+                    e.key,
+                    style: Theme.of(context).accentTextTheme.bodyText1,
+                    softWrap: true,
+                    maxLines: 10,
+                  ),
                 ),
-              ),
-              Text(
-                e.value,
-                style: Theme.of(context).accentTextTheme.bodyText2
-              ),
+              ],
+            ),
+            Text(e.value, style: Theme.of(context).accentTextTheme.bodyText2),
           ],
         ),
       ),
