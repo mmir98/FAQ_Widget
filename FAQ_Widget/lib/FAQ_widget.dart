@@ -49,16 +49,17 @@ class FAQWidget extends StatelessWidget {
             //   ),
             // ),
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 icon,
-                Padding(
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.83,
                   padding:
                       const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                   child: Text(
                     e.key,
                     style: Theme.of(context).accentTextTheme.bodyText1,
-                    softWrap: true,
-                    maxLines: 10,
+
                   ),
                 ),
               ],
